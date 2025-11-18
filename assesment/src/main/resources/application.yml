@@ -4,8 +4,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/technical-assessment-inovasi-daya-solusi
-    username: postgres
-    password: A.sdfghjkl12345
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   jpa:
     hibernate:
