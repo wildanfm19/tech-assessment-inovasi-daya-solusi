@@ -1,9 +1,6 @@
 package com.wildan.assesment.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +17,13 @@ public class TransactionDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "product_id")
     private Integer productID;
+
 
     private String productName;
 
-    private Integer amount;
+    private String amount;
 
     private String customerName;
 
@@ -32,11 +31,9 @@ public class TransactionDetails {
 
     private LocalDateTime transactionDate;
 
-    private String createdBy;
+    private String createBy;
 
     private LocalDateTime createOn;
-
-
 
 
 

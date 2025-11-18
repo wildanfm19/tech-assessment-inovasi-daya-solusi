@@ -1,7 +1,9 @@
 package com.wildan.assesment.controller;
 
 import com.wildan.assesment.dto.ResponseDTO;
+import com.wildan.assesment.dto.StatusDTO;
 import com.wildan.assesment.dto.TransactionDetailDTO;
+import com.wildan.assesment.service.StatusService;
 import com.wildan.assesment.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +18,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TransactionDetailController {
 
-    private TransactionService transactionService;
+    private final TransactionService transactionService;
+
+    private final StatusService statusService;
 
     @GetMapping("/all")
     public ResponseEntity<ResponseDTO> getAllTransactionDetails(){
         List<TransactionDetailDTO> transactionDetailDTO = transactionService.getAllTransactionDetails();
+        List<StatusDTO> statusDTOS = statusService.getAllStatus();
+
+        return ResponseEntity.ok(ResponseDTO.builder()
+                        .data(transactionDetailDTO)
+                        .status(statusDTOS)
+                .build());
     }
 }

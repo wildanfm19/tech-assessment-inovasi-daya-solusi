@@ -4,6 +4,7 @@ import com.wildan.assesment.dto.TransactionDetailDTO;
 import com.wildan.assesment.entity.TransactionDetails;
 import com.wildan.assesment.repositories.TransactionDetailRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,11 +13,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TransactionServiceIImpl implements  TransactionService {
 
-    TransactionDetailRepository transactionDetailRepository;
+    private final TransactionDetailRepository transactionDetailRepository;
+
+    private final ModelMapper modelMapper;
+
 
 
     @Override
     public List<TransactionDetailDTO> getAllTransactionDetails() {
-        List<TransactionDetails> transactionDetails =
+        List<TransactionDetails> transactionDetails = transactionDetailRepository.findAll();
+
+        List<TransactionDetailDTO> transactionDetailsDTOS = transactionDetails.stream()
+                .map(transaction -> modelMapper.map(transaction , TransactionDetailDTO.class))
+                .toList();
+
+        return transactionDetailsDTOS;
     }
 }

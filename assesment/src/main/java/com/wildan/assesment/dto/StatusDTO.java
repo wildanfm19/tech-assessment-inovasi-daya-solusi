@@ -9,5 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StatusDTO {
 
+    private Integer id;
 
+    private String name;
 }
