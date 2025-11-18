@@ -14,7 +14,7 @@ public class TransactionDetailDTO {
 
     private Integer id;
 
-    private Integer productID;
+    private String productID;
 
     private String productName;
 

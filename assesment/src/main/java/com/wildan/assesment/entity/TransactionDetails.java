@@ -18,7 +18,7 @@ public class TransactionDetails {
     private Integer id;
 
     @Column(name = "product_id")
-    private Integer productID;
+    private String productID;
 
 
     private String productName;
